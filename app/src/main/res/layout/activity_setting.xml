@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".page.Setting_Activity">
+
+
+    <TextView
+        android:id="@+id/graphStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="@string/graphStyle"
+        app:layout_constraintBottom_toTopOf="@+id/setLimitLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    /** 목표선을 설정하는 스위치 버튼 */
+
+    <Switch
+        android:id="@+id/setLimitLine"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/setting_top_button_layout"
+        android:gravity="center_vertical"
+        android:text="@string/setLimitLine"
+        android:textAllCaps="false"
+        android:textColor="#8A8A8A"
+        android:thumb="@drawable/switch_button_thumb"
+        android:track="@drawable/switch_button_selector"
+        app:layout_constraintBottom_toTopOf="@+id/setGraphStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    /** 그래프 스타일을 변경하는 버튼 */
+
+    <Button
+        android:id="@+id/setGraphStyle"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/setting_button_layout"
+        android:gravity="center_vertical"
+        android:text="@string/setGraphStyle"
+        android:textAllCaps="false"
+        android:textColor="@drawable/setting_button_color_selector"
+        app:layout_constraintBottom_toTopOf="@+id/information"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/information"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="@string/information"
+        app:layout_constraintBottom_toTopOf="@+id/checkTotalDays"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    /** 총 운동 일자를 확인하는 버튼 */
+
+    <Button
+        android:id="@+id/checkTotalDays"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/setting_top_button_layout"
+        android:gravity="center_vertical"
+        android:text="@string/totalDays"
+        android:textAllCaps="false"
+        android:textColor="@drawable/setting_button_color_selector"
+        app:layout_constraintBottom_toTopOf="@+id/graphMenuButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    /** 평균 운동 시간을 확인하는 버튼 */
+
+    <Button
+        android:id="@+id/checkAverageTime"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/setting_button_layout"
+        android:gravity="center_vertical"
+        android:text="@string/averageTime"
+        android:textAllCaps="false"
+        android:textColor="@drawable/setting_button_color_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkTotalDays" />
+
+
+    <TextView
+        android:id="@+id/data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="@string/data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkAverageTime" />
+
+
+    /** 데이터를 삭제하는 버튼 */
+
+    <Button
+        android:id="@+id/deleteData"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/setting_button_layout"
+        android:gravity="center_vertical"
+        android:text="@string/deleteData"
+        android:textAllCaps="false"
+        android:textColor="@drawable/setting_button_color_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/data" />
+
+
+    /** 등록 메뉴로 이동하는 버튼 */
+
+    <Button
+        android:id="@+id/registerMenuButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_button_selector"
+        android:onClick="moveRegister"
+        android:text="Register"
+        android:textColor="#CC7E7E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/graphMenuButton"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    /** 그래프 메뉴로 이동하는 버튼 */
+
+    <Button
+        android:id="@+id/graphMenuButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_button_selector"
+        android:onClick="moveGraph"
+        android:text="Graph"
+        android:textColor="#CC7E7E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/bmiMenuButton"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@id/registerMenuButton" />
+
+
+    /** BMI 메뉴로 이동하는 버튼 */
+
+    <Button
+        android:id="@+id/bmiMenuButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_button_selector"
+        android:onClick="moveBMI"
+        android:text="BMI"
+        android:textColor="#CC7E7E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/settingMenuButton"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@id/graphMenuButton" />
+
+
+    /** 설정 메뉴로 이동하는 버튼 */
+
+    <Button
+        android:id="@+id/settingMenuButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_button_selector"
+        android:onClick="moveSetting"
+        android:text="Setting"
+        android:textColor="#CC7E7E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@id/bmiMenuButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".settingPage.GraphStyle_Activity">
+
+    /** 그래프 스타일을 변경하기 위한 라디오 그룹 */
+
+    <RadioGroup
+        android:id="@+id/styleGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/backButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        /** HORIZONTAL_BEZIER 스타일 선택 버튼 */
+
+        <RadioButton
+            android:id="@+id/HORIZONTAL_BEZIER"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="start"
+            android:background="@drawable/setting_top_button_layout"
+            android:buttonTint="@color/hardpink"
+            android:layoutDirection="rtl"
+            android:text=" HORIZONTAL BEZIER"
+            android:textAlignment="textStart"
+            android:textColor="@color/lightblack" />
+
+        /** CUBIC_BEZIER 스타일 선택 버튼 */
+
+        <RadioButton
+            android:id="@+id/CUBIC_BEZIER"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="start"
+            android:background="@drawable/setting_top_button_layout"
+            android:buttonTint="@color/hardpink"
+            android:layoutDirection="rtl"
+            android:text=" CUBIC BEZIER"
+            android:textAlignment="textStart"
+            android:textColor="@color/lightblack" />
+
+        /** LINEAR 스타일 선택 버튼 */
+
+        <RadioButton
+            android:id="@+id/LINEAR"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="start"
+            android:background="@drawable/setting_top_button_layout"
+            android:buttonTint="@color/hardpink"
+            android:layoutDirection="rtl"
+            android:text=" LINEAR"
+            android:textAlignment="textStart"
+            android:textColor="@color/lightblack" />
+
+        /** STEPPED 스타일 선택 버튼 */
+
+        <RadioButton
+            android:id="@+id/STEPPED"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="start"
+            android:background="@drawable/setting_button_layout"
+            android:buttonTint="@color/hardpink"
+            android:layoutDirection="rtl"
+            android:text=" STEPPED"
+            android:textAlignment="textStart"
+            android:textColor="@color/lightblack" />
+    </RadioGroup>
+
+
+    /** 뒤로 가기 버튼 */
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/big_button_selector"
+        android:text="Back"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

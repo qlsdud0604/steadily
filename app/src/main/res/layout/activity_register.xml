@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".page.Register_Activity">
+
+    /** 운동 날짜를 입력하는 창 */
+
+    <EditText
+        android:id="@+id/putDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_layout"
+        android:ems="10"
+        android:hint="@string/putDate"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/putTime"
+        app:layout_constraintEnd_toStartOf="@+id/setDate"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    /** 운동 날짜를 선택하기 위한 버튼 */
+
+    <Button
+        android:id="@+id/setDate"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="@drawable/date_button_selector"
+        android:text="Date"
+        android:textColor="#CC7E7E"
+        app:layout_constraintBottom_toTopOf="@+id/putTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/putDate" />
+
+
+    /** 운동 시간을 입력하는 창 */
+
+    <EditText
+        android:id="@+id/putTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_layout"
+        android:ems="10"
+        android:hint="@string/putTime"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/saveData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    /** 입력된 데이터를 저장하는 버튼 */
+
+    <Button
+        android:id="@+id/saveData"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/big_button_selector"
+        android:text="Save"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/bmiMenuButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    /** 등록 메뉴로 이동하는 버튼 */
+
+    <Button
+        android:id="@+id/registerMenuButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_button_selector"
+        android:onClick="moveRegister"
+        android:text="Register"
+        android:textColor="#CC7E7E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/graphMenuButton"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    /** 그래프 메뉴로 이동하는 버튼 */
+
+    <Button
+        android:id="@+id/graphMenuButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_button_selector"
+        android:onClick="moveGraph"
+        android:text="Graph"
+        android:textColor="#CC7E7E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/bmiMenuButton"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@id/registerMenuButton" />
+
+
+    /** BMI 메뉴로 이동하는 버튼 */
+
+    <Button
+        android:id="@+id/bmiMenuButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_button_selector"
+        android:onClick="moveBMI"
+        android:text="BMI"
+        android:textColor="#CC7E7E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/settingMenuButton"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@id/graphMenuButton" />
+
+
+    /** 설정 메뉴로 이동하는 버튼 */
+
+    <Button
+        android:id="@+id/settingMenuButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_button_selector"
+        android:onClick="moveSetting"
+        android:text="Setting"
+        android:textColor="#CC7E7E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@id/bmiMenuButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,42 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/hardpink</item>
+        <item name="android:statusBarColor">@color/lightblack</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="MySpinnerDatePickerStyle" parent="android:Theme.Material.Dialog" tools:ignore="NewApi">
+        <item name="android:datePickerStyle">@style/MySpinnerDatePicker</item>
+        <item name="android:textColorPrimary">@color/lightblack</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/buttonText</item>
+        <item name="android:buttonBarNeutralButtonStyle">@style/buttonText</item>
+        <item name="android:theme">@style/MySpinnerDatePicker</item>
+    </style>
+
+    <style name="MySpinnerDatePicker" parent="android:Widget.Material.DatePicker" tools:ignore="NewApi">
+        <item name="android:datePickerMode">spinner</item>
+        <item name="colorControlNormal">@color/hardpink</item>
+    </style>
+
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@color/lightblack</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:background">@color/white</item>
+        <item name="buttonBarPositiveButtonStyle">@style/buttonText</item>
+        <item name="buttonBarNeutralButtonStyle">@style/buttonText</item>
+    </style>
+
+    <style name="buttonText">
+        <item name="android:textColor">@drawable/dialog_button_selector</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+
+</resources>

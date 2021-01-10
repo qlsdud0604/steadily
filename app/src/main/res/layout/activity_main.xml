@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".page.BMI_Activity">
+
+    /** 키를 입력하는 창 */
+
+    <EditText
+        android:id="@+id/putHeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_layout"
+        android:ems="10"
+        android:hint="@string/putHeight"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/putWeight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    /** 몸무게를 입력하는 창 */
+
+    <EditText
+        android:id="@+id/putWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_layout"
+        android:ems="10"
+        android:hint="@string/putWeight"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/calculateBMI"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    /** 사용자의 BMI 지수를 출력하는 창 */
+
+    <TextView
+        android:id="@+id/getBMI"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/date_button_layout"
+        android:gravity="center_vertical"
+        android:text=" BMI : "
+        android:textColor="#CC7E7E"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/getCondition"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/putWeight" />
+
+
+    /** 사용자의 몸상태를 출력하는 창 */
+
+    <TextView
+        android:id="@+id/getCondition"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/date_button_layout"
+        android:gravity="center_vertical"
+        android:text="@string/condition"
+        android:textColor="#CC7E7E"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/getBMI"
+        app:layout_constraintTop_toBottomOf="@+id/putWeight" />
+
+
+    /** 사용자의 BMI 지수를 계산하는 버튼 */
+
+    <Button
+        android:id="@+id/calculateBMI"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/big_button_selector"
+        android:text="Calculate"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/bmiMenuButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    /** 등록 메뉴로 이동하는 버튼 */
+
+    <Button
+        android:id="@+id/registerMenuButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_button_selector"
+        android:onClick="moveRegister"
+        android:text="Register"
+        android:textColor="#CC7E7E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/graphMenuButton"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    /** 그래프 메뉴로 이동하는 버튼 */
+
+    <Button
+        android:id="@+id/graphMenuButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_button_selector"
+        android:onClick="moveGraph"
+        android:text="Graph"
+        android:textColor="#CC7E7E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/bmiMenuButton"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@id/registerMenuButton" />
+
+
+    /** BMI 메뉴로 이동하는 버튼 */
+
+    <Button
+        android:id="@+id/bmiMenuButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_button_selector"
+        android:onClick="moveBMI"
+        android:text="BMI"
+        android:textColor="#CC7E7E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/settingMenuButton"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@id/graphMenuButton" />
+
+
+    /** 설정 메뉴로 이동하는 버튼 */
+
+    <Button
+        android:id="@+id/settingMenuButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_button_selector"
+        android:onClick="moveSetting"
+        android:text="Setting"
+        android:textColor="#CC7E7E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@id/bmiMenuButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

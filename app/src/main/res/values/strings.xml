@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Exercise Application</string>
+    <string name="putDate">" "Select your exercise date.</string>
+    <string name="putTime">" "Enter your exercise time. (minutes)</string>
+    <string name="putHeight">" "Height (cm)</string>
+    <string name="putWeight">" "Weight (kg)</string>
+    <string name="exerciseTime">Exercise Time</string>
+    <string name="goal">GOAL !!</string>
+    <string name="condition">" "Condition : </string>
+    <string name="graphStyle">" "Graph Style</string>
+    <string name="setLimitLine">" "Limit line setting</string>
+    <string name="setGraphStyle">" "Graph style setting</string>
+    <string name="information">" "Information</string>
+    <string name="totalDays">" "Total exercise days</string>
+    <string name="averageTime">" "Average exercise time</string>
+    <string name="laguage">" "Language</string>
+    <string name="setLanguage">" "Language setting</string>
+    <string name="data">" "Data</string>
+    <string name="deleteData">" "Data deletion</string>
+    <string name="putGoal">" "Enter your goal. (minutes)</string>
+    <string name="get0Day">" "Total Exercise days : 0 day</string>
+    <string name="getDays">" "Total Exercise days :" "</string>
+    <string name='days'>" "days</string>
+    <string name="get0Minute">" "Average Exercise Time : 0 minute</string>
+    <string name="getMinutes">" "Average Exercise Time :" "</string>
+    <string name="minutes">" "minutes</string>
+
+    <string name="informationMessage">Please enter your information.</string>
+    <string name="saveMessage">Data saved.</string>
+    <string name="underweight">" "Condition : underweight</string>
+    <string name="normal">" "Condition : normal</string>
+    <string name="overweight">" "Condition : overweight</string>
+    <string name="obesity">" "Condition : obesity</string>
+    <string name="altitudeObesity">" "Condition : altitude obesity</string>
+    <string name="sureMessage">Are you sure you want to delete data?</string>
+    <string name="yes">yes</string>
+    <string name="select">select</string>
+    <string name="cancel">cancel</string>
+    <string name="deleteMessage">Data deleted.</string>
+</resources>

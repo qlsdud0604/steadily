@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Exercise Application</string>
+    <string name="putDate">" "운동 일자를 선택해 주세요.</string>
+    <string name="putTime">" "운동 시간을 입력해 주세요. (분)</string>
+    <string name="putHeight">" "키 (cm)</string>
+    <string name="putWeight">" "몸무게 (kg)</string>
+    <string name="exerciseTime">운동 시간</string>
+    <string name="goal">목표 !!</string>
+    <string name="condition">" "상태 : </string>
+    <string name="graphStyle">" "그래프 스타일</string>
+    <string name="setLimitLine">" "목표선 설정</string>
+    <string name="setGraphStyle">" "그래프 스타일 설정</string>
+    <string name="information">" "정보</string>
+    <string name="totalDays">" "총 운동 일자</string>
+    <string name="averageTime">" "평균 운동 시간</string>
+    <string name="laguage">" "언어</string>
+    <string name="setLanguage">" "언어 설정</string>
+    <string name="data">" "데이터</string>
+    <string name="deleteData">" "데이터 삭제</string>
+    <string name="putGoal">" "목표 운동 시간을 입력해 주세요. (분)</string>
+    <string name="get0Day">" "총 운동 시간 : 0 일</string>
+    <string name="getDays">" "총 운동 시간 :" "</string>
+    <string name='days'>" "일</string>
+    <string name="get0Minute">" "평균 운동 시간 : 0 분</string>
+    <string name="getMinutes">" "평균 운동 시간 :" "</string>
+    <string name="minutes">" "분</string>
+
+    <string name="informationMessage">정보를 입력해 주세요.</string>
+    <string name="saveMessage">데이터가 저장되었습니다.</string>
+    <string name="underweight">" "상태 : 저체중</string>
+    <string name="normal">" "상태 : 보통</string>
+    <string name="overweight">" "상태 : 과체중</string>
+    <string name="obesity">" "상태 : 비만</string>
+    <string name="altitudeObesity">" "상태 : 고도 비만</string>
+    <string name="sureMessage">데이터를 삭제하시겠습니까?</string>
+    <string name="yes">예</string>
+    <string name="select">선택</string>
+    <string name="cancel">취소</string>
+    <string name="deleteMessage">데이터가 삭제되었습니다.</string>
+</resources>
