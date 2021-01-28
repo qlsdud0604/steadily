@@ -8,6 +8,8 @@
 
 4. Room 라이브러리를 활용한 데이터베이스의 구현
 
+5. MPAndroidChart 라이브러리를 활용한 꺾은선그래프의 구현
+
 5. 프로젝트 데모
 
 -----
@@ -53,7 +55,8 @@
 -----
 ### 4. Room 라이브러리를 활용한 데이터베이스의 구현 :floppy_disk:
 **1) Room 이란?**   
-ㆍ 안드로이드 앱에서 SQLite 데이터베이스를 쉽고 편리하게 사용할 수 있도록 하는 기능이다. 사용자의 데이터를 로컬 데이터베이스에 저장하여 기기가 네트워크에 접근할 수 없을 때도 사용자가 콘텐츠를 탐색할 수 있다. 
+ㆍ 안드로이드 앱에서 SQLite 데이터베이스를 쉽고 편리하게 사용할 수 있도록 하는 기능이다.  
+ㆍ 사용자의 데이터를 로컬 데이터베이스에 저장하여 기기가 네트워크에 접근할 수 없을 때도 사용자가 콘텐츠를 탐색할 수 있다.    
 
 **2) Room의 구성요소 (Database, Entity, Dao)**
 ```java
@@ -98,7 +101,7 @@ public class UserData {
 ㆍ Room을 구성하는 3가지 주요 요소 중 하나인 Enitity에 관한 클래스이다.   
 ㆍ 데이터베이스에서 테이블 역할을 수행하며, 데이터베이스에 저장되는 데이터를 정의한 클래스이다.   
 ㆍ "@Entity" 어노테이션을 클래스 상단에 작성함으로써, Entity 역할을 하는 클래스임을 명시한다.   
-ㆍ "@PrimaryKey" 어노테이션으로 기본 키 값을 지정할 수 있으며, 기본 키는 중복될 수 없다.   
+ㆍ "@PrimaryKey" 어노테이션으로 기본 키 값을 지정할 수 있으며, 기본 키는 중복될 수 없다.
 <br/>
 ```java
 @Dao
@@ -121,7 +124,7 @@ public interface UserDataDao {
 }
 ```
 ㆍ Room을 구성하는 3가지 주요 요소 중 하나인 DAO에 관한 인터페이스이다.   
-ㆍ 데이터베이스에 접근하여 수행할 작업을 메소드 형태로 정의하였다.   
+ㆍ 데이터베이스에 접근하여 수행할 작업을 메소드 형태로 정의하였다.
 <br/>
 ```java
 @androidx.room.Database(entities = {UserData.class}, version = 1)
@@ -133,7 +136,6 @@ public abstract class Database extends RoomDatabase {
 ㆍ 데이터베이스를 새롭게 생성하거나 버전을 관리하기위한 클래스이다.   
 ㆍ 해당 인터페이스는 RoomDatabase 클래스를 상속받는 추상 클래스여야 한다.   
 ㆍ "@Database" 어노테이션을 통해 Database 역할을 하는 인터페이스임을 명시해야 하며, 어노테이션 안에 해당 데이터베이스와 관련된 Entity 리스트를 포함해야 한다.   
-<br/>
 
 **3) 사용자의 데이터를 데이터베이스에 삽입**
 ```java
@@ -159,3 +161,30 @@ saveData.setOnClickListener(new View.OnClickListener() {
 ㆍ 위 코드는 "Register_Activity.java" 파일에서 saveData버튼을 눌렀을 때 동작을 정의한 메소드이다.   
 ㆍ 사용자의 운동일자와 운동시간에 관한 데이터를 Entity로써 정의한 "UserData" 객체 형태로 생성한다.   
 ㆍ 그 후, DAO 인터페이스에 정의한 "put()" 메소드를 통해 데이터베이스에 데이터를 삽입한다.   
+
+-----
+### 5. MPAndroidChart 라이브러리를 활용한 꺾은선그래프의 구현 :chart_with_upwards_trend:
+**1) MPAndroidChart 란?**   
+ㆍ Philipp Jahoda가 개발한 어플리케이션을 위한 차트 라이브러리이다.   
+ㆍ 다양한 종류의 그래프들과 그래프를 제어할 수 있는 다양한 이벤트들을 제공해주고 있다.   
+
+**2) 라이브러리 추가**
+```java
+implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+```
+ㆍ app 수준의 build.gradle 파일의 dependencies 부분에 위 코드를 작성하여 MPAndroidChart 라이브러리를 추가해준다.   
+
+**3) Chart 태그 추가**
+```java
+<com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/graph"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/graphMenuButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+```
+ㆍ 자신이 사용하고 싶은 layout 파일에 Chart 태그를 작성해준다.   
+ㆍ LineChart외에도 다양한 Chart를 사용할 수 있다.   
