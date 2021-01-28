@@ -101,7 +101,7 @@ public class UserData {
 ㆍ Room을 구성하는 3가지 주요 요소 중 하나인 Enitity에 관한 클래스이다.   
 ㆍ 데이터베이스에서 테이블 역할을 수행하며, 데이터베이스에 저장되는 데이터를 정의한 클래스이다.   
 ㆍ "@Entity" 어노테이션을 클래스 상단에 작성함으로써, Entity 역할을 하는 클래스임을 명시한다.   
-ㆍ "@PrimaryKey" 어노테이션으로 기본 키 값을 지정할 수 있으며, 기본 키는 중복될 수 없다.
+ㆍ "@PrimaryKey" 어노테이션으로 기본 키 값을 지정할 수 있으며, 기본 키는 중복될 수 없다.   
 <br/>
 ```java
 @Dao
@@ -124,7 +124,7 @@ public interface UserDataDao {
 }
 ```
 ㆍ Room을 구성하는 3가지 주요 요소 중 하나인 DAO에 관한 인터페이스이다.   
-ㆍ 데이터베이스에 접근하여 수행할 작업을 메소드 형태로 정의하였다.
+ㆍ 데이터베이스에 접근하여 수행할 작업을 메소드 형태로 정의하였다.   
 <br/>
 ```java
 @androidx.room.Database(entities = {UserData.class}, version = 1)
