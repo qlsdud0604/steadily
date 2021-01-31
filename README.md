@@ -158,7 +158,7 @@ saveData.setOnClickListener(new View.OnClickListener() {
             }
         });
 ```
-ㆍ 위 코드는 "Register_Activity.java" 파일에서 saveData버튼을 눌렀을 때 동작을 정의한 메소드이다.   
+ㆍ 위 코드는 "Register_Activity.java" 파일에서 saveData 버튼을 눌렀을 때 동작을 정의한 메소드이다.   
 ㆍ 사용자의 운동일자와 운동시간에 관한 데이터를 Entity로써 정의한 "UserData" 객체 형태로 생성한다.   
 ㆍ 그 후, DAO 인터페이스에 정의한 "put()" 메소드를 통해 데이터베이스에 데이터를 삽입한다.   
 
