@@ -39,27 +39,30 @@ class Graph {
      */
     static public void getGraph(List<UserData> userDataList, LineChart getGraph, Context context, int styleValue) {
 
-        ArrayList<Entry> values = new ArrayList<>();
+        ArrayList<Entry> values = new ArrayList<>();   // lineDataSet에 담겨질 데이터를 ArrayList 형태로 선언
 
+        /** lineDataSet에 담겨질 사용자의 운동시간 정보를 "value"에 삽입 */
         for (int i = 0; i < userDataList.size(); i++) {
             int time = userDataList.get(i).getTime();
 
             values.add(new Entry(i, time));
         }
 
-        if (values.isEmpty())
+        if (values.isEmpty())   // "values"에 담겨진 데이터가 없을 경우 확대 및 축소 불가능
             getGraph.setScaleEnabled(false);
-        else
+        else   // "values"에 담겨진 데이터가 있을 경우 확대 및 축소 가능
             getGraph.setScaleEnabled(true);
 
-        LineDataSet lineDataSet = new LineDataSet(values, "Exercise Time");
-        lineDataSet.setColor(ContextCompat.getColor(context, R.color.easypink));
-        lineDataSet.setCircleColor(ContextCompat.getColor(context, R.color.easypink));
-        lineDataSet.setCircleHoleColor(ContextCompat.getColor(context, R.color.easypink));
+        /** lineDataSet에 대한 구체적인 설정 */
+        LineDataSet lineDataSet = new LineDataSet(values, "Exercise Time");   // ArrayList인 "values"를 참조해 lineDataSet 선언
+        lineDataSet.setColor(ContextCompat.getColor(context, R.color.easypink));   // 사용자에게 출력될 차트의 색상 설정
+        lineDataSet.setCircleColor(ContextCompat.getColor(context, R.color.easypink));   // 사용자에게 출력될 차트의 구분점 테두리 색상 설정
+        lineDataSet.setCircleHoleColor(ContextCompat.getColor(context, R.color.easypink));   // 사용자에게 출력될 차트의 구분점 구멍 색상 설정
         lineDataSet.setDrawFilled(true);
-        Drawable graphFill = ContextCompat.getDrawable(context, R.drawable.graph_filled);
+        Drawable graphFill = ContextCompat.getDrawable(context, R.drawable.graph_filled);   // 사용자에게 출력될 차트의 색상이 그라데이션으로 출력되도록 설정
         lineDataSet.setFillDrawable(graphFill);
 
+        /** 정수형 매개변수인 "styleValue"의 값을 참조해 그래프 스타일을 변경할 수 있도록 설정 */
         if (styleValue == 1) {
             lineDataSet.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);
         } else if (styleValue == 2) {
@@ -70,19 +73,20 @@ class Graph {
             lineDataSet.setMode(LineDataSet.Mode.STEPPED);
         }
 
+        /** lineData에 대한 구체적인 설정 */
+        LineData lineData = new LineData();   // LineDataSet을 담는 그릇으로써 여러개의 LineDatSet이 삽입 가능
+        lineData.addDataSet(lineDataSet);   // "lineData"에 위에서 선언한 "lineDataSet" 삽입
+        lineData.setValueTextColor(ContextCompat.getColor(context, R.color.lightblack));   // 사용자에게 출력될 차트의 텍스트 컬러 설정
+        lineData.setValueTextSize(9);   // 사용자에게 출력될 차트의 텍스트 사이즈 설정
+//        lineData.setValueFormatter(new ValueFormatter() {
+//
+//            @Override
+//            public String getFormattedValue(float value) {
+//                return "" + (int) value;
+//            }
+//        });
 
-        LineData lineData = new LineData();
-        lineData.addDataSet(lineDataSet);
-        lineData.setValueTextColor(ContextCompat.getColor(context, R.color.lightblack));
-        lineData.setValueTextSize(9);
-        lineData.setValueFormatter(new ValueFormatter() {
-
-            @Override
-            public String getFormattedValue(float value) {
-                return "" + (int) value;
-            }
-        });
-
+        /** 그래프의 x축에 대한 구체적인 설정 */
         XAxis xAxis = getGraph.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(ContextCompat.getColor(context, R.color.lightblack));
@@ -145,8 +149,6 @@ class Graph {
         getGraph.setVisibleXRangeMaximum(5f);
         getGraph.setData(lineData);
         getGraph.invalidate();
-
-
     }
 
     /**
