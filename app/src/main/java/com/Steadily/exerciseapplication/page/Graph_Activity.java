@@ -76,27 +76,19 @@ class Graph {
         /** lineData에 대한 구체적인 설정 */
         LineData lineData = new LineData();   // LineDataSet을 담는 그릇으로써 여러개의 LineDatSet이 삽입 가능
         lineData.addDataSet(lineDataSet);   // "lineData"에 위에서 선언한 "lineDataSet" 삽입
-        lineData.setValueTextColor(ContextCompat.getColor(context, R.color.lightblack));   // 사용자에게 출력될 차트의 텍스트 컬러 설정
+        lineData.setValueTextColor(ContextCompat.getColor(context, R.color.lightblack));   // 사용자에게 출력될 차트의 텍스트 색상 설정
         lineData.setValueTextSize(9);   // 사용자에게 출력될 차트의 텍스트 사이즈 설정
-//        lineData.setValueFormatter(new ValueFormatter() {
-//
-//            @Override
-//            public String getFormattedValue(float value) {
-//                return "" + (int) value;
-//            }
-//        });
 
         /** 그래프의 x축에 대한 구체적인 설정 */
-        XAxis xAxis = getGraph.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextColor(ContextCompat.getColor(context, R.color.lightblack));
-        xAxis.setGridColor(ContextCompat.getColor(context, R.color.superlightblack));
-        xAxis.setGranularityEnabled(true);
-        xAxis.setGranularity(1f);
-        xAxis.setLabelCount(5);
+        XAxis xAxis = getGraph.getXAxis();   // x축에 해당하는 변수인 "xAxis" 선언
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);   // x축의 위치 설정
+        xAxis.setTextColor(ContextCompat.getColor(context, R.color.lightblack));   // x축의 표시될 텍스트 색상 설정
+        xAxis.setGridColor(ContextCompat.getColor(context, R.color.superlightblack));   // x축의 색상 설정
+        xAxis.setLabelCount(5);   // x축에 표시될 구간을 최대 5개로 설정
 
-        final ArrayList<String> xLabelList = new ArrayList<String>();
+        final ArrayList<String> xLabelList = new ArrayList<String>();   // x축에 표시될 데이터들을 ArrayList 형태로 선언
 
+        /** 데이터베이스에 저장된 사용자의 운동 일자 정보를 위에서 선언한 xLabelList에 추가 */
         for (int i = 0; i < userDataList.size(); i++) {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyMMdd");
             Date date = null;
@@ -112,6 +104,7 @@ class Graph {
             xLabelList.add(dateString);
         }
 
+        /** x축에 표시될 데이터(xLabelList)를 재가공하여 출력 */
         xAxis.setValueFormatter(new ValueFormatter() {
 
             @Override
@@ -125,9 +118,7 @@ class Graph {
                         return xLabelList.get((int) value);
                 } else
                     return xLabelList.get((int) value);
-
             }
-
         });
 
         YAxis yAxisLeft = getGraph.getAxisLeft();
