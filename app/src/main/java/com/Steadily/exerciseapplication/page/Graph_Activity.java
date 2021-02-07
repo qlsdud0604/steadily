@@ -82,7 +82,7 @@ class Graph {
         /** 그래프의 x축에 대한 구체적인 설정 */
         XAxis xAxis = getGraph.getXAxis();   // x축에 해당하는 변수인 "xAxis" 선언
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);   // x축의 위치 설정
-        xAxis.setTextColor(ContextCompat.getColor(context, R.color.lightblack));   // x축의 표시될 텍스트 색상 설정
+        xAxis.setTextColor(ContextCompat.getColor(context, R.color.lightblack));   // x축에 표시될 텍스트 색상 설정
         xAxis.setGridColor(ContextCompat.getColor(context, R.color.superlightblack));   // x축의 색상 설정
         xAxis.setLabelCount(5);   // x축에 표시될 구간을 최대 5개로 설정
 
@@ -121,25 +121,23 @@ class Graph {
             }
         });
 
-        YAxis yAxisLeft = getGraph.getAxisLeft();
-        yAxisLeft.setTextColor(ContextCompat.getColor(context, R.color.lightblack));
-        yAxisLeft.setGridColor(ContextCompat.getColor(context, R.color.lightblack));
-        yAxisLeft.setAxisMinimum(0f);
-        yAxisLeft.setAxisMaximum(160f);
+        /** 그래프의 y축에 대한 구체적인 설정 */
+        YAxis yAxisLeft = getGraph.getAxisLeft();   // 좌측 y축에 해당하는 변수인 "yAxisLeft" 선언
+        yAxisLeft.setTextColor(ContextCompat.getColor(context, R.color.lightblack));   // y축에 표시될 텍스트 색상 설정
+        yAxisLeft.setGridColor(ContextCompat.getColor(context, R.color.lightblack));   // y축의 색상 설정
+        yAxisLeft.setAxisMinimum(0f);   // y축에 표시될 최소 범위 설정
+        yAxisLeft.setAxisMaximum(160f);   // y축에 표시될 최대 범위 설정
         yAxisLeft.setLabelCount(4);
 
-        YAxis yAxisRight = getGraph.getAxisRight();
-        yAxisRight.setDrawLabels(false);
-        yAxisRight.setDrawAxisLine(false);
-        yAxisRight.setDrawGridLines(false);
+        YAxis yAxisRight = getGraph.getAxisRight();   // 우측 y축에 해당하는 변수인 "yAxisRight" 선언
+        yAxisRight.setDrawLabels(false);   // 우측 y축에 대한 미사용 설정
+        yAxisRight.setDrawAxisLine(false);   // 우측 y축에 대한 미사용 설정
+        yAxisRight.setDrawGridLines(false);   // 우측 y축에 대한 미사용 설정
 
-        Legend legend = getGraph.getLegend();
-        legend.setEnabled(false);
+        Legend legend = getGraph.getLegend();   // 레전드에 해당하는 변수인 "legend" 선언
+        legend.setEnabled(false);   // 레전드에 대한 미사용 설정
 
-        getGraph.setDescription(null);
-        getGraph.setVisibleXRangeMaximum(5f);
-        getGraph.setData(lineData);
-        getGraph.invalidate();
+        getGraph.setData(lineData);   // 위에서 설정한 그래프를 최종적으로 삽입
     }
 
     /**
