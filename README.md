@@ -189,109 +189,124 @@ implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 ㆍ 자신이 사용하고 싶은 layout 파일에 Chart 태그를 작성해준다.   
 ㆍ LineChart외에도 다양한 Chart를 사용할 수 있다.   
 
-**4) 그래프에 대한 구체적인 설정**
+**4) 데이터의 생성**
 ```java
-static public void getGraph(List<UserData> userDataList, LineChart getGraph, Context context, int styleValue) {
+ArrayList<Entry> values = new ArrayList<>();   // lineDataSet에 담겨질 데이터를 ArrayList 형태로 선언
 
-   ArrayList<Entry> values = new ArrayList<>();   // lineDataSet에 담겨질 데이터를 ArrayList 형태로 선언
+/** lineDataSet에 담겨질 사용자의 운동시간 정보를 "value"에 삽입 */
+for (int i = 0; i < userDataList.size(); i++) {
+   int time = userDataList.get(i).getTime();
 
-   /** lineDataSet에 담겨질 사용자의 운동시간 정보를 "value"에 삽입 */
-   for (int i = 0; i < userDataList.size(); i++) {
-      int time = userDataList.get(i).getTime();
+   values.add(new Entry(i, time));
+}
 
-      values.add(new Entry(i, time));
-   }
+if (values.isEmpty())   // "values"에 담겨진 데이터가 없을 경우 확대 및 축소 불가능
+   getGraph.setScaleEnabled(false);
+else   // "values"에 담겨진 데이터가 있을 경우 확대 및 축소 가능
+   getGraph.setScaleEnabled(true);
+```
+ㆍ 사용자의 운동시간 정보를 저장할 ArrayList 변수인 "values"를 선언한다.   
+ㆍ 이때 ArrayList의 타입은 라이브러리에서 지정한 Entry 타입이어야 한다.   
+ㆍ 그 후, 사용자의 운동시간 정보를 "values" 변수에 삽입함으로써 그래프로 출력할 데이터 리스트를 생성한다.   
 
-   if (values.isEmpty())   // "values"에 담겨진 데이터가 없을 경우 확대 및 축소 불가능
-      getGraph.setScaleEnabled(false);
-   else   // "values"에 담겨진 데이터가 있을 경우 확대 및 축소 가능
-      getGraph.setScaleEnabled(true);
+**5) LineDataSet의 생성**
+```java
+LineDataSet lineDataSet = new LineDataSet(values, "Exercise Time");   // ArrayList인 "values"를 참조해 LineDataSet 선언
+lineDataSet.setColor(ContextCompat.getColor(context, R.color.easypink));   // 사용자에게 출력될 차트의 색상 설정
+lineDataSet.setCircleColor(ContextCompat.getColor(context, R.color.easypink));   // 사용자에게 출력될 차트의 구분점 테두리 색상 설정
+lineDataSet.setCircleHoleColor(ContextCompat.getColor(context, R.color.easypink));   // 사용자에게 출력될 차트의 구분점 구멍 색상 설정
+lineDataSet.setDrawFilled(true);
+Drawable graphFill = ContextCompat.getDrawable(context, R.drawable.graph_filled);   // 사용자에게 출력될 차트의 색상이 그라데이션으로 출력되도록 설정
+lineDataSet.setFillDrawable(graphFill);
+```
+ㆍ 사용자에게 출력될 정보가 담겨진 "values"를 참조해 "lineDataSet"을 선언한다.   
+ㆍ LineDataSet 변수는 사용자에게 보여질 하나의 그래프에 대한 변수이다.   
+ㆍ 그래프 선의 색상, 구분점의 색상 등 다양한 설정이 가능하다.   
 
-   /** lineDataSet에 대한 구체적인 설정 */
-   LineDataSet lineDataSet = new LineDataSet(values, "Exercise Time");   // ArrayList인 "values"를 참조해 lineDataSet 선언
-   lineDataSet.setColor(ContextCompat.getColor(context, R.color.easypink));   // 사용자에게 출력될 차트의 색상 설정
-   lineDataSet.setCircleColor(ContextCompat.getColor(context, R.color.easypink));   // 사용자에게 출력될 차트의 구분점 테두리 색상 설정
-   lineDataSet.setCircleHoleColor(ContextCompat.getColor(context, R.color.easypink));   // 사용자에게 출력될 차트의 구분점 구멍 색상 설정
-   lineDataSet.setDrawFilled(true);
-   Drawable graphFill = ContextCompat.getDrawable(context, R.drawable.graph_filled);   // 사용자에게 출력될 차트의 색상이 그라데이션으로 출력되도록 설정
-   lineDataSet.setFillDrawable(graphFill);
+**6) LineData의 생성**
+```java
+LineData lineData = new LineData();   // LineDataSet을 담는 그릇으로써 여러개의 LineDatSet이 삽입 가능
+lineData.addDataSet(lineDataSet);   // "lineData"에 위에서 선언한 "lineDataSet" 삽입
+lineData.setValueTextColor(ContextCompat.getColor(context, R.color.lightblack));   // 사용자에게 출력될 차트의 텍스트 색상 설정
+lineData.setValueTextSize(9);   // 사용자에게 출력될 차트의 텍스트 사이즈 설정
+```
+ㆍ LineDataSet을 담는 그릇과 같은 역할을 하는 LineData 변수를 생성한다. 이 때 여러개의 LineDataSet을 삽입할 수 있다.   
+ㆍ 그래프의 텍스트 색상, 사이즈 등 다양한 설정이 가능하다.
 
-   /** 정수형 매개변수인 "styleValue"의 값을 참조해 그래프 스타일을 변경할 수 있도록 설정 */
-   if (styleValue == 1) {
-      lineDataSet.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);
-   } else if (styleValue == 2) {
-      lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-   } else if (styleValue == 3) {
-      lineDataSet.setMode(LineDataSet.Mode.LINEAR);
-   } else if (styleValue == 4) {
-      lineDataSet.setMode(LineDataSet.Mode.STEPPED);
-   }
+**7) x축의 설정**
+```java
+XAxis xAxis = getGraph.getXAxis();   // x축에 해당하는 변수인 "xAxis" 선언
+xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);   // x축의 위치 설정
+xAxis.setTextColor(ContextCompat.getColor(context, R.color.lightblack));   // x축에 표시될 텍스트 색상 설정
+xAxis.setGridColor(ContextCompat.getColor(context, R.color.superlightblack));   // x축의 색상 설정
+xAxis.setLabelCount(5);   // x축에 표시될 구간을 최대 5개로 설정
+```
 
-   /** lineData에 대한 구체적인 설정 */
-   LineData lineData = new LineData();   // LineDataSet을 담는 그릇으로써 여러개의 LineDatSet이 삽입 가능
-   lineData.addDataSet(lineDataSet);   // "lineData"에 위에서 선언한 "lineDataSet" 삽입
-   lineData.setValueTextColor(ContextCompat.getColor(context, R.color.lightblack));   // 사용자에게 출력될 차트의 텍스트 색상 설정
-   lineData.setValueTextSize(9);   // 사용자에게 출력될 차트의 텍스트 사이즈 설정
+**8) x축 데이터 재가공**
+```java
+final ArrayList<String> xLabelList = new ArrayList<String>();   // x축에 표시될 데이터들을 ArrayList 형태로 선언
 
-   /** 그래프의 x축에 대한 구체적인 설정 */
-   XAxis xAxis = getGraph.getXAxis();   // x축에 해당하는 변수인 "xAxis" 선언
-   xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);   // x축의 위치 설정
-   xAxis.setTextColor(ContextCompat.getColor(context, R.color.lightblack));   // x축에 표시될 텍스트 색상 설정
-   xAxis.setGridColor(ContextCompat.getColor(context, R.color.superlightblack));   // x축의 색상 설정
-   xAxis.setLabelCount(5);   // x축에 표시될 구간을 최대 5개로 설정
-
-   final ArrayList<String> xLabelList = new ArrayList<String>();   // x축에 표시될 데이터들을 ArrayList 형태로 선언
-
-   /** 데이터베이스에 저장된 사용자의 운동 일자 정보를 위에서 선언한 xLabelList에 추가 */
-   for (int i = 0; i < userDataList.size(); i++) {
-      SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyMMdd");
-      Date date = null;
+/** 데이터베이스에 저장된 사용자의 운동 일자 정보를 위에서 선언한 xLabelList에 추가 */
+for (int i = 0; i < userDataList.size(); i++) {
+   SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyMMdd");
+   Date date = null;
       
-      try {
-         date = simpleDateFormat.parse(Float.toString(userDataList.get(i).getDate()));
-      } catch (ParseException e) {
-         e.printStackTrace();
-      }
-
-      SimpleDateFormat newFormat = new SimpleDateFormat("MM/dd");
-      String dateString = newFormat.format(date);
-
-      xLabelList.add(dateString);
+   try {
+      date = simpleDateFormat.parse(Float.toString(userDataList.get(i).getDate()));
+   } catch (ParseException e) {
+      e.printStackTrace();
    }
 
-   /** x축에 표시될 데이터(xLabelList)를 재가공하여 출력 */
-   xAxis.setValueFormatter(new ValueFormatter() {
+   SimpleDateFormat newFormat = new SimpleDateFormat("MM/dd");
+   String dateString = newFormat.format(date);
 
-      @Override
-      public String getFormattedValue(float value) {
-         if (xLabelList.size() == 1) {
-            if (value < 0)
-               return "";
-            else if (value == 1)
-               return "";
-            else
-               return xLabelList.get((int) value);
-          } else
-               return xLabelList.get((int) value);
-      }
-   });
+   xLabelList.add(dateString);
+}
 
-   /** 그래프의 y축에 대한 구체적인 설정 */
-   YAxis yAxisLeft = getGraph.getAxisLeft();   // 좌측 y축에 해당하는 변수인 "yAxisLeft" 선언
-   yAxisLeft.setTextColor(ContextCompat.getColor(context, R.color.lightblack));   // y축에 표시될 텍스트 색상 설정
-   yAxisLeft.setGridColor(ContextCompat.getColor(context, R.color.lightblack));   // y축의 색상 설정
-   yAxisLeft.setAxisMinimum(0f);   // y축에 표시될 최소 범위 설정
-   yAxisLeft.setAxisMaximum(160f);   // y축에 표시될 최대 범위 설정
-   yAxisLeft.setLabelCount(4);
+/** x축에 표시될 데이터(xLabelList)를 재가공하여 출력 */
+xAxis.setValueFormatter(new ValueFormatter() {
 
-   YAxis yAxisRight = getGraph.getAxisRight();   // 우측 y축에 해당하는 변수인 "yAxisRight" 선언
-   yAxisRight.setDrawLabels(false);   // 우측 y축에 대한 미사용 설정
-   yAxisRight.setDrawAxisLine(false);   // 우측 y축에 대한 미사용 설정
-   yAxisRight.setDrawGridLines(false);   // 우측 y축에 대한 미사용 설정
+   @Override
+   public String getFormattedValue(float value) {
+      if (xLabelList.size() == 1) {
+         if (value < 0)
+            return "";
+         else if (value == 1)
+            return "";
+         else
+            return xLabelList.get((int) value);
+       } else
+            return xLabelList.get((int) value);
+   }
+});
+```
+ㆍ
+ㆍ
+ㆍ
 
-   Legend legend = getGraph.getLegend();   // 레전드에 해당하는 변수인 "legend" 선언
-   legend.setEnabled(false);   // 레전드에 대한 미사용 설정
+**9) y축의 설정**
+```java
+YAxis yAxisLeft = getGraph.getAxisLeft();   // 좌측 y축에 해당하는 변수인 "yAxisLeft" 선언
+yAxisLeft.setTextColor(ContextCompat.getColor(context, R.color.lightblack));   // y축에 표시될 텍스트 색상 설정
+yAxisLeft.setGridColor(ContextCompat.getColor(context, R.color.lightblack));   // y축의 색상 설정
+yAxisLeft.setAxisMinimum(0f);   // y축에 표시될 최소 범위 설정
+yAxisLeft.setAxisMaximum(160f);   // y축에 표시될 최대 범위 설정
+yAxisLeft.setLabelCount(4);
 
+YAxis yAxisRight = getGraph.getAxisRight();   // 우측 y축에 해당하는 변수인 "yAxisRight" 선언
+yAxisRight.setDrawLabels(false);   // 우측 y축에 대한 미사용 설정
+yAxisRight.setDrawAxisLine(false);   // 우측 y축에 대한 미사용 설정
+yAxisRight.setDrawGridLines(false);   // 우측 y축에 대한 미사용 설정
+```
+
+**10) Legend의 설정**
+```java
+Legend legend = getGraph.getLegend();   // 레전드에 해당하는 변수인 "legend" 선언
+legend.setEnabled(false);   // 레전드에 대한 미사용 설정
+```
+
+**11) 그래프 **
+```java
    getGraph.setData(lineData);   // 위에서 설정한 그래프를 최종적으로 삽입
 }
 ```
