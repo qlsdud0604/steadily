@@ -241,6 +241,8 @@ xAxis.setTextColor(ContextCompat.getColor(context, R.color.lightblack));   // x�
 xAxis.setGridColor(ContextCompat.getColor(context, R.color.superlightblack));   // x축의 색상 설정
 xAxis.setLabelCount(5);   // x축에 표시될 구간을 최대 5개로 설정
 ```
+ㆍ x축에 해당하는 변수인 "xAxis"를 선언한다.   
+ㆍ x축에 관련된 다양한 설정이 가능하다.   
 
 **8) x축 데이터 재가공**
 ```java
@@ -280,9 +282,10 @@ xAxis.setValueFormatter(new ValueFormatter() {
    }
 });
 ```
-ㆍ
-ㆍ
-ㆍ
+ㆍ x축에 사용자의 운동 날짜 정보를 출력하기 위해 재가공하는 코드이다.   
+ㆍ x축에 표시될 데이터 리스트인 String 타입의 ArrayList 변수 "xLabelList"를 선언한다.   
+ㆍ 데이터베이스에 저장된 운동 날짜 데이터를 SimpleDataFormat() 메소드를 이용하여 적절한 날짜 형태로 변환후 "xLabelList"에 추가한다.   
+ㆍ 최종적으로 getFormattedValue() 메소드를 String 타입의 날짜 형태로 출력하도록 재정의 한다.   
 
 **9) y축의 설정**
 ```java
@@ -305,8 +308,7 @@ Legend legend = getGraph.getLegend();   // 레전드에 해당하는 변수인 "
 legend.setEnabled(false);   // 레전드에 대한 미사용 설정
 ```
 
-**11) 그래프 **
+**11) 그래프 삽입**
 ```java
-   getGraph.setData(lineData);   // 위에서 설정한 그래프를 최종적으로 삽입
-}
-```
+getGraph.setData(lineData);   // 위에서 설정한 그래프를 최종적으로 삽입
+``
