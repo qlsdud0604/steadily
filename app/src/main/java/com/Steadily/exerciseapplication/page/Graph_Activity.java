@@ -79,12 +79,21 @@ class Graph {
         lineData.addDataSet(lineDataSet);   // "lineData"에 위에서 선언한 "lineDataSet" 삽입
         lineData.setValueTextColor(ContextCompat.getColor(context, R.color.lightblack));   // 사용자에게 출력될 차트의 텍스트 색상 설정
         lineData.setValueTextSize(9);   // 사용자에게 출력될 차트의 텍스트 사이즈 설정
+        lineData.setValueFormatter(new ValueFormatter() {
+
+            @Override
+            public String getFormattedValue(float value) {
+                return "" + (int) value;
+            }
+        });
 
         /** 그래프의 x축에 대한 구체적인 설정 */
         XAxis xAxis = graph.getXAxis();   // x축에 해당하는 변수인 "xAxis" 선언
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);   // x축의 위치 설정
         xAxis.setTextColor(ContextCompat.getColor(context, R.color.lightblack));   // x축에 표시될 텍스트 색상 설정
         xAxis.setGridColor(ContextCompat.getColor(context, R.color.superlightblack));   // x축의 색상 설정
+        xAxis.setGranularityEnabled(true);
+        xAxis.setGranularity(1f);
         xAxis.setLabelCount(5);   // x축에 표시될 구간을 최대 5개로 설정
 
         final ArrayList<String> xLabelList = new ArrayList<String>();   // x축에 표시될 데이터들을 ArrayList 형태로 선언
@@ -127,8 +136,8 @@ class Graph {
         yAxisLeft.setTextColor(ContextCompat.getColor(context, R.color.lightblack));   // y축에 표시될 텍스트 색상 설정
         yAxisLeft.setGridColor(ContextCompat.getColor(context, R.color.lightblack));   // y축의 색상 설정
         yAxisLeft.setAxisMinimum(0f);   // y축에 표시될 최소 범위 설정
-        yAxisLeft.setAxisMaximum(160f);   // y축에 표시될 최대 범위 설정
-        yAxisLeft.setLabelCount(4);
+        yAxisLeft.setAxisMaximum(200f);   // y축에 표시될 최대 범위 설정
+        yAxisLeft.setLabelCount(5);
 
         YAxis yAxisRight = graph.getAxisRight();   // 우측 y축에 해당하는 변수인 "yAxisRight" 선언
         yAxisRight.setDrawLabels(false);   // 우측 y축에 대한 미사용 설정
