@@ -15,6 +15,7 @@ import com.Steadily.exerciseapplication.R;
 import com.Steadily.exerciseapplication.database.Database;
 import com.Steadily.exerciseapplication.database.UserData;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
@@ -37,7 +38,7 @@ class Graph {
     /**
      * 그래프를 얻기위한 메소드
      */
-    static public void getGraph(List<UserData> userDataList, LineChart getGraph, Context context, int styleValue) {
+    static public void getGraph(List<UserData> userDataList, LineChart graph, Context context, int styleValue) {
 
         ArrayList<Entry> values = new ArrayList<>();   // lineDataSet에 담겨질 데이터를 ArrayList 형태로 선언
 
@@ -49,9 +50,9 @@ class Graph {
         }
 
         if (values.isEmpty())   // "values"에 담겨진 데이터가 없을 경우 확대 및 축소 불가능
-            getGraph.setScaleEnabled(false);
+            graph.setScaleEnabled(false);
         else   // "values"에 담겨진 데이터가 있을 경우 확대 및 축소 가능
-            getGraph.setScaleEnabled(true);
+            graph.setScaleEnabled(true);
 
         /** lineDataSet에 대한 구체적인 설정 */
         LineDataSet lineDataSet = new LineDataSet(values, "Exercise Time");   // ArrayList인 "values"를 참조해 lineDataSet 선언
@@ -80,7 +81,7 @@ class Graph {
         lineData.setValueTextSize(9);   // 사용자에게 출력될 차트의 텍스트 사이즈 설정
 
         /** 그래프의 x축에 대한 구체적인 설정 */
-        XAxis xAxis = getGraph.getXAxis();   // x축에 해당하는 변수인 "xAxis" 선언
+        XAxis xAxis = graph.getXAxis();   // x축에 해당하는 변수인 "xAxis" 선언
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);   // x축의 위치 설정
         xAxis.setTextColor(ContextCompat.getColor(context, R.color.lightblack));   // x축에 표시될 텍스트 색상 설정
         xAxis.setGridColor(ContextCompat.getColor(context, R.color.superlightblack));   // x축의 색상 설정
@@ -122,22 +123,25 @@ class Graph {
         });
 
         /** 그래프의 y축에 대한 구체적인 설정 */
-        YAxis yAxisLeft = getGraph.getAxisLeft();   // 좌측 y축에 해당하는 변수인 "yAxisLeft" 선언
+        YAxis yAxisLeft = graph.getAxisLeft();   // 좌측 y축에 해당하는 변수인 "yAxisLeft" 선언
         yAxisLeft.setTextColor(ContextCompat.getColor(context, R.color.lightblack));   // y축에 표시될 텍스트 색상 설정
         yAxisLeft.setGridColor(ContextCompat.getColor(context, R.color.lightblack));   // y축의 색상 설정
         yAxisLeft.setAxisMinimum(0f);   // y축에 표시될 최소 범위 설정
         yAxisLeft.setAxisMaximum(160f);   // y축에 표시될 최대 범위 설정
         yAxisLeft.setLabelCount(4);
 
-        YAxis yAxisRight = getGraph.getAxisRight();   // 우측 y축에 해당하는 변수인 "yAxisRight" 선언
+        YAxis yAxisRight = graph.getAxisRight();   // 우측 y축에 해당하는 변수인 "yAxisRight" 선언
         yAxisRight.setDrawLabels(false);   // 우측 y축에 대한 미사용 설정
         yAxisRight.setDrawAxisLine(false);   // 우측 y축에 대한 미사용 설정
         yAxisRight.setDrawGridLines(false);   // 우측 y축에 대한 미사용 설정
 
-        Legend legend = getGraph.getLegend();   // 레전드에 해당하는 변수인 "legend" 선언
+        Legend legend = graph.getLegend();   // 레전드에 해당하는 변수인 "legend" 선언
         legend.setEnabled(false);   // 레전드에 대한 미사용 설정
 
-        getGraph.setData(lineData);   // 위에서 설정한 그래프를 최종적으로 삽입
+        Description description = graph.getDescription();   // 디스크립션에 해당하는 변수인 "description" 선언
+        description.setEnabled(false);   // 디스크립션에 대한 미사용 설정
+
+        graph.setData(lineData);   // 위에서 설정한 그래프를 최종적으로 삽입
     }
 
     /**
@@ -161,7 +165,7 @@ class Graph {
 
 
 public class Graph_Activity extends AppCompatActivity {
-    private LineChart getGraph;
+    private LineChart graph;
 
     private Database db;
 
@@ -170,9 +174,9 @@ public class Graph_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
 
-        getGraph = (LineChart) findViewById(R.id.graph);
-        getGraph.setDragEnabled(true);
-        getGraph.setScaleEnabled(true);
+        graph = (LineChart) findViewById(R.id.graph);
+        graph.setDragEnabled(true);
+        graph.setScaleEnabled(true);
 
         db = Room.databaseBuilder(this, Database.class, "db").allowMainThreadQueries().build();
 
@@ -181,7 +185,7 @@ public class Graph_Activity extends AppCompatActivity {
         SharedPreferences.Editor styleEditor = graphStyle.edit();
         styleEditor.commit();
 
-        Graph.getGraph(db.userDataDao().getAll(), this.getGraph, getApplicationContext(), styleValue);
+        Graph.getGraph(db.userDataDao().getAll(), this.graph, getApplicationContext(), styleValue);
 
 
         SharedPreferences goalSetting = getSharedPreferences("goalSetting", 0);
@@ -194,7 +198,7 @@ public class Graph_Activity extends AppCompatActivity {
         SharedPreferences.Editor goalEditor = goalSetting.edit();
         goalEditor.commit();
 
-        Graph.getLimitLine(getGraph, settingValue, value, getApplicationContext());
+        Graph.getLimitLine(graph, settingValue, value, getApplicationContext());
 
     }
 
@@ -227,3 +231,4 @@ public class Graph_Activity extends AppCompatActivity {
         startActivity(new Intent(this, Setting_Activity.class));
     }
 }
+
