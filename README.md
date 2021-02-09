@@ -301,14 +301,19 @@ yAxisRight.setDrawLabels(false);   // 우측 y축에 대한 미사용 설정
 yAxisRight.setDrawAxisLine(false);   // 우측 y축에 대한 미사용 설정
 yAxisRight.setDrawGridLines(false);   // 우측 y축에 대한 미사용 설정
 ```
-
+ㆍ 좌측 y축에 해당하는 변수인 "yAxisLeft"를 선언한 후 색상, 범위 등 다양한 설정을 한다.      
+ㆍ 우측 y축은 사용하지 않을 예정이므로 미사용에 대한 설정을 한다.   
+ 
 **10) Legend의 설정**
 ```java
 Legend legend = getGraph.getLegend();   // 레전드에 해당하는 변수인 "legend" 선언
 legend.setEnabled(false);   // 레전드에 대한 미사용 설정
 ```
+ㆍ 그래프 하단에 색과 라벨을 나타내는 Legend에 대한 설정이다.   
+ㆍ Legend는 사용하지 않을 예정이므로 미사용에 대한 설정을 한다.   
 
 **11) 그래프 삽입**
 ```java
 getGraph.setData(lineData);   // 위에서 설정한 그래프를 최종적으로 삽입
-``
+```
+ㆍ 위에서 설정한 그래프를 setData() 메소드를 사용하여 삽입을한다.   
