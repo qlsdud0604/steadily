@@ -312,8 +312,19 @@ legend.setEnabled(false);   // 레전드에 대한 미사용 설정
 ㆍ 그래프 하단에 색과 라벨을 나타내는 Legend에 대한 설정이다.   
 ㆍ Legend는 사용하지 않을 예정이므로 미사용에 대한 설정을 한다.   
 
+**11) Description의 설정**
+```java
+Description description = graph.getDescription();   // 디스크립션에 해당하는 변수인 "description" 선언
+description.setEnabled(false);   // 디스크립션에 대한 미사용 설정
+```
+ㆍ 그래프 하단에 설명을 나타내는 Description에 대한 설정이다.   
+ㆍ Description은 사용하지 않을 예정이므로 미사용에 대한 설정을 한다.   
+
 **11) 그래프 삽입**
 ```java
 getGraph.setData(lineData);   // 위에서 설정한 그래프를 최종적으로 삽입
 ```
 ㆍ 위에서 설정한 그래프를 setData() 메소드를 사용하여 삽입을한다.   
+
+-----
+### 6. 프로젝트 데모 :iphone:
