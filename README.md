@@ -239,6 +239,8 @@ XAxis xAxis = getGraph.getXAxis();   // x축에 해당하는 변수인 "xAxis" �
 xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);   // x축의 위치 설정
 xAxis.setTextColor(ContextCompat.getColor(context, R.color.lightblack));   // x축에 표시될 텍스트 색상 설정
 xAxis.setGridColor(ContextCompat.getColor(context, R.color.superlightblack));   // x축의 색상 설정
+xAxis.setGranularityEnabled(true);   // x축 데이터들의 간격 설정
+xAxis.setGranularity(1f);   // x축 데이터들 간의 간격을 1f로 설정
 xAxis.setLabelCount(5);   // x축에 표시될 구간을 최대 5개로 설정
 ```
 ㆍ x축에 해당하는 변수인 "xAxis"를 선언한다.   
