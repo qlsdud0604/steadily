@@ -10,7 +10,7 @@
 
 5. [MPAndroidChart 라이브러리를 활용한 꺾은선그래프의 구현](#5-mpandroidchart-라이브러리를-활용한-꺾은선그래프의-구현-chart_with_upwards_trend)
 
-5. 프로젝트 데모
+6. [프로젝트 데모](#6-프로젝트-데모-iphone)
 
 -----
 ### 1. 프로젝트 이름 :memo:
