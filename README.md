@@ -10,7 +10,7 @@
 
 5. [MPAndroidChart 라이브러리를 활용한 꺾은선그래프의 구현](#5-mpandroidchart-라이브러리를-활용한-꺾은선그래프의-구현-chart_with_upwards_trend)
 
-6. [프로젝트 ](#6-프로젝트-시연-iphone)
+6. [프로젝트 시연](#6-프로젝트-시연-iphone)
 
 -----
 ### 1. 프로젝트 이름 :memo:
@@ -329,4 +329,5 @@ getGraph.setData(lineData);   // 위에서 설정한 그래프를 최종적으�
 ㆍ 위에서 설정한 그래프를 setData() 메소드를 사용하여 삽입을한다.   
 
 -----
-### 6. 프로젝트  :iphone:
+### 6. 프로젝트 시연 :iphone:
+<iframe width="640" height="360" src="https://www.youtube.com/embed/6Az2cNU7gUw" frameborder="0" gesture="media" allowfullscreen=""></iframe>
