@@ -331,8 +331,12 @@ getGraph.setData(lineData);   // 위에서 설정한 그래프를 최종적으�
 -----
 ### 6. 프로젝트 시연 :iphone:
 <img src="https://user-images.githubusercontent.com/61148914/108456118-e95f1580-72b2-11eb-8633-1c34d1380919.png" width="15%">
-ㆍ 유튜브에서 확인하기 : [링크] (https://youtu.be/MMyog4W3ZDk)
+
+ㆍ 유튜브에서 확인하기 : [바로가기 링크](https://youtu.be/MMyog4W3ZDk)
+
 <br/>
 <br/>
-  <img src="https://user-images.githubusercontent.com/61148914/108456631-1233da80-72b4-11eb-993b-ce5d74ada912.png" width="10%">
-ㆍ 플레이스토어에서 확인하기 : [바로가기 링크] (https://play.google.com/store/apps/details?id=com.Steadily.exerciseapplication)
+
+<img src="https://user-images.githubusercontent.com/61148914/108456631-1233da80-72b4-11eb-993b-ce5d74ada912.png" width="10%">
+
+ㆍ 플레이스토어에서 확인하기 : [바로가기 링크](https://play.google.com/store/apps/details?id=com.Steadily.exerciseapplication)
