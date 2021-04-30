@@ -1,4 +1,4 @@
-# Android Studio를 활용한 운동기록 어플리케이션의 제작
+# Android Studio를 활용한 운동기록 애플리케이션의 제작
 ### 목차 :book:
 1. [프로젝트 이름](#1-프로젝트-이름-memo)
 
@@ -165,7 +165,7 @@ saveData.setOnClickListener(new View.OnClickListener() {
 -----
 ### 5. MPAndroidChart 라이브러리를 활용한 꺾은선그래프의 구현 :chart_with_upwards_trend:
 **1) MPAndroidChart 란?**   
-ㆍ Philipp Jahoda가 개발한 어플리케이션을 위한 차트 라이브러리이다.   
+ㆍ Philipp Jahoda가 개발한 애플리케이션을 위한 차트 라이브러리이다.   
 ㆍ 다양한 종류의 그래프들과 그래프를 제어할 수 있는 다양한 이벤트들을 제공해주고 있다.   
 
 **2) 라이브러리 추가**
