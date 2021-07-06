@@ -38,15 +38,15 @@
 
 -----
 ### 3. 기술 스택 :computer:
-* 활용 IDE
+* IDE
 ```
 - Android Studio
 ```
-* 활용 언어
+* 언어
 ```
 - Java
 ```
-* 활용 라이브러리
+* 라이브러리
 ```
 - Room
 - MPAndroidChart
