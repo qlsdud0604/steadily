@@ -1,4 +1,6 @@
 # Android Studio를 활용한 운동기록 애플리케이션의 제작
+
+---
 ### :rocket: 목차
 * [프로젝트 이름](#rocket-프로젝트-이름)
  
@@ -13,12 +15,12 @@
 * [프로젝트 시연](#rocket-프로젝트-시연)
 </br>
 
------
+---
 ### :rocket: 프로젝트 이름
 <img src="https://user-images.githubusercontent.com/61148914/104551372-1c8e0380-567a-11eb-829f-27914a2121b6.png" width="25%">
 </br>
 
------
+---
 ### :rocket: 프로젝트 일정
 * **2020.12.23 :** Android Studio 설치 및 기본 환경설정
 
@@ -39,7 +41,7 @@
 * **2021.01.17 :** UI 보완 및 마무리
 </br>
 
------
+---
 ### :rocket: 기술 스택
 * IDE
 ```
@@ -56,7 +58,7 @@
 ```
 </br>
 
------
+---
 ### :rocket: Room 라이브러리를 활용한 데이터베이스의 구현
 **✔️ Room 이란?**   
 ㆍ 안드로이드 앱에서 SQLite 데이터베이스를 쉽고 편리하게 사용할 수 있도록 하는 기능이다.  
@@ -189,7 +191,7 @@ saveData.setOnClickListener(new View.OnClickListener() {
 ㆍ 그 후, DAO 인터페이스에 정의한 "put( )" 메서드를 통해 데이터베이스에 데이터를 삽입한다.   
 </br>
 
------
+---
 ### :rocket: MPAndroidChart 라이브러리를 활용한 꺾은선그래프의 구현
 **✔️ MPAndroidChart 란?**   
 ㆍ Philipp Jahoda가 개발한 애플리케이션을 위한 차트 라이브러리이다.   
@@ -422,7 +424,7 @@ getGraph.setData(lineData);   // 위에서 설정한 그래프를 최종적으�
 ㆍ 위에서 설정한 그래프를 setData( ) 메서드를 사용하여 삽입을한다.   
 </br>
 
------
+---
 ### :rocket: 프로젝트 시연
 * 유튜브에서 확인하기 : [바로가기 링크](https://youtu.be/MMyog4W3ZDk)
 
